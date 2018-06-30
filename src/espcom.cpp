@@ -133,7 +133,7 @@ size_t   ESPCOM::write(tpipe output, uint8_t d){
 #endif
 #ifdef USE_SERIAL_2
     case SERIAL_PIPE:
-        return Serial1.write(d);
+        return Serial2.write(d);
         break;
 #endif
 	}	
