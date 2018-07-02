@@ -23,6 +23,11 @@
 #include "command.h"
 #include "webinterface.h"
 
+#if defined (ARDUINO_ARCH_ESP32) 
+//This is output for ESP32 to avoid garbage
+extern HardwareSerial Serial2;
+#endif
+
 #ifdef ESP_OLED_FEATURE
 #include "esp_oled.h"
  bool  ESPCOM::block_2_oled = false;
