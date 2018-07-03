@@ -19,7 +19,7 @@
 */
 
 //version and sources location
-#define FW_VERSION "2.0.0.b20"
+#define FW_VERSION "2.0.0.b21"
 #define REPOSITORY "https://github.com/luc-github/ESP3D"
 
 //definition
@@ -42,7 +42,7 @@
 using fs::File;
 #define WIFI_NONE_SLEEP WIFI_PS_NONE
 #define WIFI_LIGHT_SLEEP WIFI_PS_MIN_MODEM
-#define WIFI_MODEM_SLEEP WIFI_PS_MAX_MODEM
+#define WIFI_MODEM_SLEEP WIFI_PS_MIN_MODEM
 #define WIFI_PHY_MODE_11B WIFI_PROTOCOL_11B
 #define WIFI_PHY_MODE_11G WIFI_PROTOCOL_11B | WIFI_PROTOCOL_11G
 #define WIFI_PHY_MODE_11N WIFI_PROTOCOL_11B | WIFI_PROTOCOL_11G | WIFI_PROTOCOL_11N

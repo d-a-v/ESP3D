@@ -217,11 +217,7 @@ bool WIFI_CONFIG::Setup (bool force_ap)
 #ifdef ESP_OLED_FEATURE
 	OLED_DISPLAY::clear_lcd();
 #endif
-#ifdef ARDUINO_ARCH_ESP8266
-    WiFi.setSleepMode ( (WiFiSleepType_t) bflag);
-#else
-    esp_wifi_set_ps ( (wifi_ps_type_t) bflag);
-#endif
+
     sleep_mode = bflag;
     if (force_ap) {
         bmode = AP_MODE;
@@ -434,6 +430,13 @@ bool WIFI_CONFIG::Setup (bool force_ap)
 #endif
         WiFi.begin (sbuf, pwd);
         delay (100);
+#ifdef ARDUINO_ARCH_ESP8266
+    WiFi.setSleepMode ( (WiFiSleepType_t) sleep_mode);
+#else
+	//for backward compatibility
+	if ((wifi_ps_type_t) sleep_mode == WIFI_PS_MAX_MODEM)sleep_mode=WIFI_PS_MIN_MODEM;
+    esp_wifi_set_ps ( (wifi_ps_type_t) sleep_mode);
+#endif
         delay (100);
         byte i = 0;
         //try to connect
